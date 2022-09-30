@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView,DeleteView
+from django.views.generic import ListView,DeleteView,DetailView,CreateView
+from django.urls import reverse_lazy
 
 from todo_app.models import Todo
 
@@ -23,9 +24,23 @@ from todo_app.models import Todo
 
 class TodoListView(ListView):
     model = Todo
-    template_name = "index.html"
+    template_name = "todo/todo_list.html"
     context_object_name = 'todos'
 
 class TodoDeleteView(DeleteView):
     model = Todo
     template_name = "todo/delete.html"
+    
+
+class TodoDetailView(DetailView):
+    model = Todo
+    template_name = "todo/detail.html"
+    context_object_name = 'todo'
+    
+class TodoCreateView(CreateView):
+    model = Todo
+    fields = "__all__"
+    template_name = "todo/todo_form.html"
+    success_url = reverse_lazy('home')
+    
+

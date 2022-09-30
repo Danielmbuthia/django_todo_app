@@ -1,0 +1,19 @@
+<h2>Todo List</h2>
+
+ <a href="{% url 'todo_app:create' %}">Add+</a>
+  <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for todo in  todos reversed %}
+            <tr>
+                <td>{{todo.name}}</td>
+                <td><a href="{% url 'todo_app:detail' todo.id %}">View</a></td>
+            </tr>
+        {% endfor %}
+    <tbody>
+  </table>
