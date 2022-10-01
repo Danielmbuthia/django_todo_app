@@ -1,6 +1,7 @@
 <h2>Add Todo</h2>
-
-<form>
+<a href="{% url 'todo_app:home' %}">Go Back</a>
+<form method="POST" action="">
+    {% csrf_token %}
     {{form.as_p}}
     <input type='submit' value='Submit'/>
 </form>

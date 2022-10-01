@@ -5,14 +5,16 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th></th>
+            <th col="span-3"> Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for todo in  todos reversed %}
             <tr>
-                <td>{{todo.name}}</td>
+                <td>{{todo.name | title}}</td>
                 <td><a href="{% url 'todo_app:detail' todo.id %}">View</a></td>
+                <td><a href="{% url 'todo_app:edit' todo.id %}" class="text-warning">Edit</a></td>
+                <td><a href="{% url 'todo_app:delete' todo.id %}" class="text-danger">Delete</a></td>
             </tr>
         {% endfor %}
     <tbody>
